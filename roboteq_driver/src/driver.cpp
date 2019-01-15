@@ -46,7 +46,7 @@ int main(int argc, char **argv) {
     XmlRpc::XmlRpcValue channel_namespaces;
     nh.getParam("channels", channel_namespaces);
     ROS_ASSERT(channel_namespaces.getType() == XmlRpc::XmlRpcValue::TypeArray);
-    for (int i = 0; i < channel_namespaces.size(); ++i) 
+    for (int i = 0; i < channel_namespaces.size(); ++i)
     {
       ROS_ASSERT(channel_namespaces[i].getType() == XmlRpc::XmlRpcValue::TypeString);
       controller.addChannel(new roboteq::Channel(1 + i, channel_namespaces[i], &controller));
@@ -54,7 +54,7 @@ int main(int argc, char **argv) {
   } else {
     // Default configuration is a single channel in the node's namespace.
     controller.addChannel(new roboteq::Channel(1, "~", &controller));
-  } 
+  }
 
   // Attempt to connect and run.
   while (ros::ok()) {
@@ -71,7 +71,7 @@ int main(int argc, char **argv) {
       ROS_DEBUG("Problem connecting to serial device.");
       ROS_ERROR_STREAM_ONCE("Problem connecting to port " << port << ". Trying again every 1 second.");
       sleep(1);
-    }  
+    }
   }
 
   return 0;

@@ -114,7 +114,7 @@ void Controller::read() {
       ROS_WARN_STREAM("Unknown serial message received: " << msg);
     }
   } else {
-    ROS_WARN_NAMED("serial", "Serial::readline() returned no data.");
+    ROS_WARN_NAMED("serial", "Serial::readline() returned no data :%s", msg.c_str());
     if (!receiving_script_messages_) {
       if (start_script_attempts_ < 5) {
         start_script_attempts_++;
